@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickMart Job Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #28a745; /* Supermarket green */
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        header img {
+            max-width: 200px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #28a745;
+        }
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .form-navigation button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #dc3545; /* Supermarket red */
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+        .form-navigation button:hover {
+            background-color: #28a745; /* Supermarket green */
+        }
+        .hidden {
+            display: none;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #dc3545;
+            color: white;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        table th {
+            background-color: #28a745;
+            color: white;
+        }
+    </style>
+    <script>
+        function showPage(pageId) {
+            const currentPage = document.querySelector('.form-page:not(.hidden)');
+            const inputs = currentPage.querySelectorAll('input, select');
+            let valid = true;
+
+            // Validate all required fields on the current page
+            inputs.forEach(input => {
+                if (!input.value) {
+                    valid = false;
+                    input.style.border = '2px solid #dc3545'; // Highlight missing fields in red
+                } else {
+                    input.style.border = '1px solid #ccc'; // Reset border if valid
+                }
+            });
+
+            if (valid) {
+                const pages = document.querySelectorAll('.form-page');
+                pages.forEach(page => page.classList.add('hidden'));
+                document.getElementById(pageId).classList.remove('hidden');
+            } else {
+                alert('Please fill out all required fields before proceeding.');
+            }
+        }
+
+        function showSuccessMessage() {
+            const finishButton = document.querySelector('button[onclick="showSuccessMessage()"]');
+            finishButton.disabled = true; // Disable the "Finish" button to prevent multiple submissions
+            const pages = document.querySelectorAll('.form-page');
+            pages.forEach(page => page.classList.add('hidden'));
+            document.getElementById('successMessage').classList.remove('hidden');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <img src="QuickMart Logo.jpg" alt="QuickMart Logo">
+        <h1>QuickMart Job Application</h1>
+        <p>Your one-stop shop for all your needs!</p>
+        <p>Join our team today and be part of a growing family that values excellence, teamwork, and customer satisfaction. Apply now for exciting job opportunities!</p>
+    </header>
+    <div class="container">
+        <!-- First Page -->
+        <div id="page1" class="form-page">
+            <h2>About Us</h2>
+            <p>QuickMart is a leading supermarket offering a wide range of products, from groceries to electronics. We are committed to providing quality products and excellent customer service.</p>
+            
+            <h2>Our Branches</h2>
+            <ul>
+                <li>Nairobi</li>
+                <li>Mombasa</li>
+                <li>Kisumu</li>
+                <li>Nakuru</li>
+                <li>Eldoret</li>
+                <li>Thika</li>
+                <li>Nyeri</li>
+                <li>Machakos</li>
+                <li>Meru</li>
+                <li>Kakamega</li>
+            </ul>
+
+            <h2>Available Positions and Salaries</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>Salary (KSH)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Cashier</td>
+                        <td>25,000</td>
+                    </tr>
+                    <tr>
+                        <td>Store Keeper</td>
+                        <td>30,000</td>
+                    </tr>
+                    <tr>
+                        <td>Sales Attendant</td>
+                        <td>20,000</td>
+                    </tr>
+                    <tr>
+                        <td>Security Officer</td>
+                        <td>18,000</td>
+                    </tr>
+                    <tr>
+                        <td>Cleaner</td>
+                        <td>17,500</td>
+                    </tr>
+                    <tr>
+                        <td>Assistant Manager</td>
+                        <td>50,000</td>
+                    </tr>
+                    <tr>
+                        <td>Chef</td>
+                        <td>35,000</td>
+                    </tr>
+                    <tr>
+                        <td>Shelf Stoker</td>
+                        <td>17,000</td>
+                    </tr>
+                    <tr>
+                        <td>Warehouse Worker</td>
+                        <td>19,000</td>
+                    </tr>
+                    <tr>
+                        <td>Customer Service Assistant</td>
+                        <td>18,000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="form-navigation">
+                <button type="button" onclick="showPage('page2')">Apply Now</button>
+            </div>
+        </div>
+
+        <!-- Second Page -->
+        <div id="page2" class="form-page hidden">
+            <h2>Job Application</h2>
+            <form>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                </div>
+                <div class="form-group">
+                    <label for="position">Position Applied For</label>
+                    <select id="position" name="position" required>
+                        <option value="">Select a position</option>
+                        <option value="cashier">Cashier</option>
+                        <option value="store_keeper">Store Keeper</option>
+                        <option value="sales_attendant">Sales Attendant</option>
+                        <option value="security_officer">Security Officer</option>
+                        <option value="cleaner">Cleaner</option>
+                        <option value="assistant_manager">Assistant Manager</option>
+                        <option value="chef">Chef</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="availability">Are you available to work on weekends and holidays?</label>
+                    <select id="availability" name="availability" required>
+                        <option value="">Select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="education">Highest Level of Education</label>
+                    <select id="education" name="education" required>
+                        <option value="">Select your education level</option>
+                        <option value="high_school">High School</option>
+                        <option value="diploma">Diploma</option>
+                        <option value="bachelor">Bachelor's Degree</option>
+                        <option value="master">Master's Degree</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="referees">Provide at least one referee (Name and Contact)</label>
+                    <input type="text" id="referees" name="referees" placeholder="Enter referee details" required>
+                </div>
+                <div class="form-group">
+                    <label for="region">Preferred Region for Work</label>
+                    <select id="region" name="region" required>
+                        <option value="">Select your preferred region</option>
+                        <option value="nairobi">Nairobi</option>
+                        <option value="mombasa">Mombasa</option>
+                        <option value="kisumu">Kisumu</option>
+                        <option value="nakuru">Nakuru</option>
+                        <option value="eldoret">Eldoret</option>
+                        <option value="thika">Thika</option>
+                        <option value="nyeri">Nyeri</option>
+                        <option value="machakos">Machakos</option>
+                        <option value="meru">Meru</option>
+                        <option value="kakamega">Kakamega</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <p><strong>Note:</strong> Please send the application fee of <strong>450 KSH</strong> to <strong>0754740550</strong> via MPESA before proceeding.</p>
+                </div>
+                <div class="form-group">
+                    <label for="mpesa">MPESA Transaction Code (for application fee)</label>
+                    <input type="text" id="mpesa" name="mpesa" placeholder="Enter MPESA transaction code" required>
+                </div>
+                <div class="form-group">
+                    <label for="payment">Application Fee</label>
+                    <input type="text" id="payment" name="payment" value="450 KSH" disabled>
+                    <p><strong>Note:</strong> The application fee is <strong>refunded</strong> once the job position is filled.</p>
+                </div>
+                <div class="form-navigation">
+                    <button type="button" onclick="showPage('page1')">Back</button>
+                    <button type="button" onclick="showPage('page3')">Next</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Third Page -->
+        <div id="page3" class="form-page hidden">
+            <h2>Thank You for Applying!</h2>
+            <p>Dear Applicant,</p>
+            <p>We sincerely appreciate your interest in joining <strong>QuickMart</strong>. Your application has been successfully submitted, and we are thrilled to have you as a potential member of our team.</p>
+            <p>We want to assure you that we value every application and are committed to providing equal opportunities to all applicants. Rest assured, you will hear back from us soon regarding the next steps in the hiring process.</p>
+            <p><strong>At QuickMart, we believe in your potential, and we are confident that you will secure the position you applied for.</strong></p>
+            <p>If you have any questions or need further assistance, please do not hesitate to contact us. We are here to support you every step of the way.</p>
+            <p>Thank you once again for choosing QuickMart. We look forward to welcoming you to our team!</p>
+            <div class="form-navigation">
+                <button type="button" onclick="showPage('page2')">Back</button>
+                <button type="button" onclick="showSuccessMessage()">Finish</button>
+            </div>
+        </div>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="form-page hidden">
+            <h2 style="color: #28a745; font-weight: bold;">Application Submitted Successfully!</h2>
+            <p style="color: #dc3545; font-size: 18px;">Thank you for applying for this position. Your application has been received and is currently under review.</p>
+            <p style="color: #28a745;">You can expect to receive a follow-up via <strong>email</strong> or <strong>phone call</strong> within the next 24 hours.</p>
+            <p style="color: #dc3545;">We appreciate your interest and look forward to connecting with you soon!</p>
+        </div>
+    </div>
+</body>
+</html>
